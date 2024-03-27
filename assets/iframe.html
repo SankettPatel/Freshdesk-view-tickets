@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <!-- See Using Zendesk Garden:
+    https://developer.zendesk.com/apps/docs/developer-guide/setup#using-zendesk-garden
+    https://garden.zendesk.com/css-components/bedrock/
+    https://garden.zendesk.com/css-components/utilities/typography/
+   -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/@zendeskgarden/css-bedrock@7.0.21,npm/@zendeskgarden/css-utilities@4.3.0">
+  <link rel="stylesheet" href="main.css">
+
+  <style>
+    body {
+      padding: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    }
+
+    .row .col.offset-s3 {margin: 0;}
+    .row .col.s6 {width: 100%;}
+.ticket_form .email{
+  display:flex;
+  flex-direction: column;
+}
+    
+.ticket_form .sub{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.ticket_form .desc{
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket_form .emailcc{
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket_form .priority{
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket_form .status{
+  display: flex;
+  flex-direction: column;
+}
+
+.showTicketsButton{
+  appearance: none;
+  background-color: rgb(31, 115, 183);
+    color: rgb(255, 255, 255);
+    border: 1px solid transparent;
+  border-radius: 0.25em;
+  cursor: pointer;
+  display: inline-block;
+  width: 50%;
+  font-weight: 500;
+  height: 3em;
+  line-height: 2em;
+  font-size: 16px;
+  padding: 0 1em;
+}
+
+.input_email{
+  padding: 10px;
+    border: none;
+    margin-bottom: 15px;
+    box-shadow: 0px 3px 2px rgba(0,0,0,0.100);
+}
+
+.input_email:focus, .input_email:active{
+  border: none;
+  border-bottom: 1px solid blue;
+}
+
+.showTicketsButton:hover{
+  background-color: lighten(#16a34a, 2%);
+}
+
+  </style>
+</head>
+<body>
+
+  <button id="showTicketsButton" class="showTicketsButton">View Tickets</button>
+  <p class="error_p" id="error_p"></p>
+
+
+
+  <script src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>

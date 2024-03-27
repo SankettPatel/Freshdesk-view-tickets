@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+  body {
+    font-family: 'Noto Sans', sans-serif;
+    padding: 20px;
+    display: flex;
+    /* box-shadow: 0 5px 30px rgba(0, 0, 0, .2); */
+    /* background: rgba(0, 0, 0, .5); */
+    /* font-family: 'Open Sans', sans-serif; */
+    font-size: 12px;
+    /* height: 50rem; */
+  }
+
+  .apps header {
+    border-bottom: 1px dotted #C2C8CC;
+    margin-bottom: 0px;
+    background: cornsilk;
+    min-height: initial;
+  }
+
+  .modal .iframe_app_view_wrapper .modal-body.app_view_wrapper {
+    background: #faebd773;
+  }
+
+
+  .modal-body {
+    background: rgba(11, 53, 199, 0.2);
+    /* overflow-y: clip !important; */
+  }
+
+  .table {
+    width: 100%;
+  }
+
+  .tId_btn {
+    border: 1px solid #44444417;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    background: rgb(60 61 64 / 22%);
+  }
+
+  .tId_btn:hover,
+  .tId_btn:focus {
+    background: #1b1e24;
+    color: #ffffff;
+  }
+
+  .modal .iframe_app_view_wrapper .modal-body.app_view_wrapper {
+    background: aliceblue;
+  }
+
+  .table_row {
+    display: inline-table;
+    width: 100%;
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.100);
+    padding: 5px 0px;
+    background: #1b1e24;
+    color: #ffffff;
+  }
+
+  .tickets-list tr {
+    font-size: 16px;
+  }
+
+  .tickets-list tr:hover,
+  .tickets-list tr:focus,
+  .tickets-list tr:active {
+    background-color: #a1a1a14d;
+  }
+
+  .tickets-list td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #44444452;
+  }
+
+  .tickets-list {
+    width: 100%;
+    display: table;
+    border: 1px solid #44444417;
+    max-height: 500px !important;
+    overflow-y: scroll;
+  }
+
+  .left_table {
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+
+  }
+
+  .tId {
+    cursor: pointer;
+  }
+
+  .right_comments {
+    display: flex;
+    /* width: 50%; */
+    max-height: 450px;
+    overflow-y: scroll;
+    flex-direction: column;
+    justify-content: space-between;
+    /* border-left: 1px dotted #44444417; */
+    /* margin-left: 20px; */
+  }
+
+  .preview_comm {
+    display: flex;
+    width: 100%;
+    margin-top: 45px;
+    flex-direction: column;
+  }
+
+  .notes-section {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+
+
+  .submit_button {
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    border: 1px solid #44444417;
+    cursor: pointer;
+    border-radius: 8px;
+    background: rgb(60 61 64 / 22%);
+    padding: 5px;
+  }
+
+  .view_notes {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .submit_button:hover,
+  .submit_button:focus {
+    background: #1b1e24;
+    color: #ffffff;
+  }
+
+  .notes-section textarea {
+    height: 50px;
+    border-radius: 16px;
+    border-width: 1px;
+    padding: 8px;
+    box-shadow: rgba(0, 0, 0, 0) 0px 2px 4px 0px inset;
+  }
+
+  .note_content {
+    padding-block: 10px;
+  }
+
+  .note_content p {
+    font-size: 12px;
+    float: right;
+    color: #a3a3a3;
+  }
+
+  .note_content1 {
+    display: flex;
+
+    flex-direction: column;
+  }
+
+  .user_note {
+    font-size: 15px;
+    font-weight: 500;
+    background: #e5e5e5;
+    margin: 8px;
+    padding: 8px 70px 8px 10px;
+    border-radius: 16px 16px 16px 4px;
+    width: fit-content;
+  }
+
+  .notes {
+    font-size: 16px;
+    font-weight: 500;
+    background: #e5e5e5;
+    margin: 8px;
+    padding: 8px 70px 8px 10px;
+    border-radius: 16px 16px 16px 4px;
+    width: fit-content;
+  }
+
+  .note_content2 {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+
+  }
+
+  .agent_note {
+    font-size: 15px;
+    font-weight: 500;
+    background: #e5e5e5;
+    margin: 8px;
+    padding: 8px 10px 8px 70px;
+    border-radius: 16px 16px 4px 16px;
+    width: fit-content;
+  }
+
+  /* tr:nth-child(odd) td{
+        background: #ebebeb;
+      } */
+
+  .comm-usr {
+    font-size: 16px;
+  }
+
+  .notes_desc {
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.100);
+    padding-bottom: 10px;
+    padding-left: 15px;
+  }
+
+  .table_wrapper {
+    display: flex;
+    flex-direction: row;
+    color: #666666;
+    font-size: 28px;
+    justify-content: center;
+    /* align-items: center; */
+  }
+
+  .table_head {
+    margin: 0;
+  }
+
+
+  .table_wrapper p {
+    font-size: 15px;
+  }
+
+  .preview_comm h2 {
+    color: #666666;
+    padding-left: 15px;
+  }
+
+  .title_desc {
+    display: flex;
+    margin-left: 20px;
+    align-items: flex-end;
+  }
+
+
+
+  .comm_title {
+    /* background: rgba(0, 0, 0, 0.2); */
+    /* margin-top: 35px; */
+  }
+
+  .ticket_desc {
+    float: left !important;
+    font-size: 16px;
+    font-weight: 500;
+
+  }
+
+  .ticket_sub {
+    float: left !important;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .header_note {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    /* box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.100); */
+  }
+
+  .note_date {
+    padding-left: 15px;
+  }
+
+  .note_user {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .split_table {
+    display: flex;
+  }
+
+  .logged_user {
+    display: flex;
+  }
+
+  .nameU {
+    padding: 0 20px;
+  }
+
+  .sticky {
+    position: fixed;
+    background-color: rgba(252, 252, 252, 0.9);
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+  .right_part{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  .table_div{
+    max-height: 600px;
+    overflow-y: scroll;
+  }
+
+</style>
+
+<head>
+  <title>User Tickets</title>
+  <meta charset="utf-8">
+  <!-- See Using Zendesk Garden:
+    https://developer.zendesk.com/apps/docs/developer-guide/setup#using-zendesk-garden
+    https://garden.zendesk.com/css-components/bedrock/
+    https://garden.zendesk.com/css-components/utilities/typography/
+  -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/@zendeskgarden/css-bedrock@7.0.21,npm/@zendeskgarden/css-utilities@4.3.0"> -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <div class="tab_body">
+    <div class="table_wrapper" id="fixedHeader">
+      <h2 class="table_head">User Tickets on Freshdesk</h2>
+    </div>
+    <div class="split_table">
+      <div class="left_table" id="left_table">
+        <div class="logged_user" id="comm_user">
+        </div>
+        <div class="table_div">
+        <table class="table table-striped fd-table">
+          <!-- <img src="./loader.gif" alt="Loading"> -->
+
+          
+          <tbody id="ticketsList" class="tickets-list">
+            <thead>
+              <tr class="table_row" id="fixedHeader">
+                <th class="table_id">Id</th>
+                <th class="table_sub">Subject</th>
+                <th class="table_status">Status</th>
+                <th class="table_group">Group</th>
+                <th class="table_assignee">Assignee</th>
+                <th class="table_date">Date Created</th>
+                <th class="table_priority">Priority</th>
+              </tr>
+            </thead>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      <div class="right_part">
+      <div class="right_comments" id="right_comments">
+        <div class="preview_comm" id="notesList">
+          <div class="comm_title">
+            <p class="notes_desc">Comments displayed here..</p>
+          </div>
+          <div id="noteList" class="view_notes">
+            <p class="name-display"></p>
+          </div>
+        </div>
+      </div>
+          <div class="notes-section">
+            <h3>Create Internal Comment:</h3>
+            <textarea id="noteInput" rows="4" cols="50" placeholder="Add Comment here"></textarea>
+            <br>
+            <input type="file" id="attachmentInput" name="myfile"><br><br>
+            <button id="noteSubmitButton" class="submit_button">Submit</button>
+          </div>
+        </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+
+    window.onscroll = function() {myFunction()};
+    var header = document.getElementById("fixedHeader");
+    var sticky = header.offsetTop;
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+    
+
+    var client = ZAFClient.init();
+    client.on('app.registered', function () {
+      var ticketClientPromise = client.get('instances').then(function (instancesData) {
+        var instances = instancesData.instances;
+        for (var instanceGuid in instances) {
+          if (instances[instanceGuid].location === 'ticket_sidebar') {
+            return client.instance(instanceGuid);
+          }
+        }
+      });
+      ticketClientPromise.then(function (ticketClient) {
+        // Send a message back to the parent client to let it know the modal is now ready for events to be triggered
+        ticketClient.trigger('modalReady');
+
+
+        // add notes ---       
+        $(document).on('click', '#ticket-id', function () {
+          var noteUser = $(comm_user).text();
+          console.log(noteUser);
+
+          var ticketId = $(this).text();
+          console.log(ticketId);
+          // Fetch notes and description for the given ticket
+          var apiEndpoint = 'https://yourdomain.freshdesk.com/api/v2/tickets/' + ticketId + '/conversations'; // Replace yourdomain with actual freshdesk domain
+          var apiSettings = {
+            url: apiEndpoint,
+            type: 'GET',
+            contentType: 'application/json',
+            headers: {
+              Authorization: 'Basic ' + 'APIkey' //This is the base64 encoded api key from freshdesk
+            }
+          };
+
+          var ticketApiEndpoint = 'https://yourdomain.freshdesk.com/api/v2/tickets/' + ticketId;
+          var ticketApiSettings = {
+            url: ticketApiEndpoint,
+            type: 'GET',
+            contentType: 'application/json',
+            headers: {
+              Authorization: 'Basic ' + 'APIkey'
+            }
+          };
+          var agentApiEndpoint = 'https://yourdomain.freshdesk.com/api/v2/agents/me';
+          var agentApiSettings = {
+            url: agentApiEndpoint,
+            type: 'GET',
+            contentType: 'application/json',
+            headers: {
+              Authorization: 'Basic ' + 'APIkey'
+            }
+          };
+          // var userName = "";
+          client.request(agentApiSettings).then(function (agentResponse) {
+            console.log(agentResponse);
+            userName = agentResponse.contact.name;
+          }).catch(function (error) {
+            console.log(error);
+          });
+          var notesList = ""; // Initialize notes list
+          client.request(ticketApiSettings).then(function (ticketResponse) {
+            console.log(ticketResponse);
+            var ticketDescription = ticketResponse.description_text; // Get ticket description
+            var descCreation = ticketResponse.created_at;
+            var ticketSubject = ticketResponse.subject;
+            notesList += "<div class= note_content1><div class=header_note><p class= ticket_sub>Subject: " + ticketSubject + "</p><p class= ticket_desc>Description: " + ticketDescription + "</p><div>" + descCreation + "</div></div></div>"; // Add ticket description to notes list
+            client.request(apiSettings).then(function (response) {
+              console.log(response);
+              for (var i = 0; i < response.length; i++) {
+                var note = response[i];
+                // console.log(response);
+                var noteId = note.id;
+                console.log(noteId);
+                var createdAt = new Date(note.created_at);
+                var userId = note.user_id;
+                console.log(userId);
+                var formattedDate = createdAt.toLocaleDateString();
+                var formattedTime = createdAt.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                var noteContentClass = (userId == ticketResponse.requester_id) ? 'note_content1' : 'note_content2';
+                var noteClass = (userId == ticketResponse.requester_id) ? 'user_note' : 'agent_note';
+                var noteContent = "<div class='" + noteContentClass + "'><p class='note_user'>" + userName + "</p>";
+
+                if (note.attachments && note.attachments.length > 0) {
+                  for (var j = 0; j < note.attachments.length; j++) {
+                    var attachment = note.attachments[j];
+                    var attachmentNameWithLink = "<a href='" + attachment.attachment_url + "' target='_blank'>" + attachment.name + "</a>";
+                    noteContent += "<h4 class='" + noteClass + "'>" + attachmentNameWithLink + "</h4>";
+                  }
+                } else {
+                  noteContent += "<h4 class='" + noteClass + "'>" + note.body_text + "</h4>";
+                }
+
+                noteContent += "<p class='note_date'>" + formattedDate + " " + formattedTime + "</p></div>";
+                notesList += noteContent;
+              }
+
+              $('#noteList').html(notesList);
+            });
+          }).catch(function (error) {
+            console.log(error);
+          });
+
+          $(document).on('click', '#noteSubmitButton', function () {
+            var noteText = $('#noteInput').val();
+            // var attachmentInput = $('#attachmentInput').val();
+            var noteData = {
+              body: noteText,
+              private: true,
+            };
+
+
+            const noteDataForm = new FormData()
+            noteDataForm.append("body", noteText);
+            // noteDataForm.append("private", true);
+
+            var fileInput = document.getElementById('attachmentInput');
+            if (fileInput.files.length > 0) {
+              noteData.attachments = [];
+              for (var i = 0; i < fileInput.files.length; i++) {
+                var file = fileInput.files[i];
+                noteData.attachments.push({
+                  resource: { type: 'attachment', file: file.name },
+                  attachment: file
+                });
+              }
+              noteDataForm.append("attachments[]", file, file.name);
+            }
+            if (attachmentInput) {
+              // Add attachment
+              var ticketApiEndpoint = 'https://yourdomain.freshdesk.com/api/v2/tickets/' + ticketId + '/notes';
+              fetch(ticketApiEndpoint, {
+                method: 'POST',
+                headers: {
+                  "Authorization": `Basic APIkey`,
+                },
+                body: noteDataForm,
+              })
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+            } else {
+              // Add note
+              var noteApiEndpoint = 'https://yourdomain.freshdesk.com/api/v2/tickets/' + ticketId + '/notes';
+              var noteApiSettings = {
+                url: noteApiEndpoint,
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(noteData),
+                headers: {
+                  Authorization: 'Basic ' + 'APIkey'
+                }
+              };
+              client.request(noteApiSettings).then(function (response) {
+                console.log(response);
+                // Refresh the notes list after adding a new note
+                var conversationApiEndpoint = 'https://yourdomain.freshdesk.com/api/v2/tickets/' + ticketId + '/conversations';
+                var conversationApiSettings = {
+                  url: conversationApiEndpoint,
+                  type: 'GET',
+                  contentType: 'application/json',
+                  headers: {
+                    Authorization: 'Basic ' + 'APIkey'
+                  }
+                };
+                client.request(conversationApiSettings).then(function (response) {
+                  console.log(response);
+                  var notesList = "";
+                  for (var i = 0; i < response.length; i++) {
+                    var note = response[i];
+                    var createdAt = new Date(note.created_at);
+                    var formattedDate = createdAt.toLocaleDateString();
+                    var formattedTime = createdAt.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                    notesList += "<div class=note_content><h4 class=notes>" + note.body_text + "</h4><p class='note_date'>" + formattedDate + " " + formattedTime + "</p></div>";
+                  }
+                  $('#noteList').html(notesList);
+                });
+              });
+            }
+          });
+
+
+        });
+
+      });
+    });
+
+    client.on('drawTickets', function (ticketsList) {
+      $('.tickets-list').html(ticketsList);
+    });
+
+    client.on('drawUser', function (comm_user) {
+      $('.logged_user').html(comm_user);
+    })
+
+  </script>
+</body>
+
+</html>
